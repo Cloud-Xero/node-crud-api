@@ -1,4 +1,4 @@
-import express, { request } from "express";
+import express, { request, response } from "express";
 import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
@@ -47,6 +47,13 @@ router.patch("/:id", (request, response) => {
   if (name) user.name = name;
   if (age) user.age = age;
   response.send(`${id} has been updated`);
+});
+
+// DELETEメソッドを追加
+router.delete("/:id", (request, response) => {
+  const { id } = request.params;
+  users = users.filter((user) => user.id !== id);
+  response.send(`${id} has been deleted`);
 });
 
 export default router;
