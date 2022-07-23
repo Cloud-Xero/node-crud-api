@@ -4,6 +4,9 @@ import useRoutes from "./routes/users.js"; // userRoutesをインポート
 const app = express(); // express のインスタンス化
 const PORT = 3000;
 
+// リクエストの中身を解析するミドルウェアを追加
+app.use(express.json());
+
 // /usersパスの処理を定義するミドルウェア（/usersにアクセスが来たら、useRoutes関数が実行される）
 app.use("/users", useRoutes);
 
