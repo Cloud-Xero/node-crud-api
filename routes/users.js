@@ -39,4 +39,14 @@ router.post("/", (request, response) => {
   response.send("POST has reached");
 });
 
+// PATCHメソッドを追加
+router.patch("/:id", (request, response) => {
+  const { id } = request.params;
+  const { name, age } = request.body;
+  const user = users.find((user) => user.id === id);
+  if (name) user.name = name;
+  if (age) user.age = age;
+  response.send(`${id} has been updated`);
+});
+
 export default router;
